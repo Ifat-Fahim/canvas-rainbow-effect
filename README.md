@@ -1,11 +1,12 @@
 # HTML canvas basics
 
 ## This is a tutorial from `Franks Laboratory`
-__________________________________
+
+---
 
 ### Solid codebase for HTML canvas animation
 
-```
+```js
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -74,5 +75,4 @@ function animate() {
     requestAnimationFrame(animate);
 }
 animate();
-
 ```
