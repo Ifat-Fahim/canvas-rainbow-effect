@@ -20,7 +20,7 @@ const mouse = {
 window.addEventListener("mousemove", (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 50; i++) {
         particlesArray.push(new Particle());
     }
 });
@@ -29,7 +29,7 @@ canvas.addEventListener("click", (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
     // creating 20 particles in every click in canvas
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 10; i++) {
         particlesArray.push(new Particle());
     }
 });
