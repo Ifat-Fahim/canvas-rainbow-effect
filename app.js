@@ -20,7 +20,7 @@ const mouse = {
 window.addEventListener("mousemove", (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 30; i++) {
         particlesArray.push(new Particle());
     }
 });
@@ -78,6 +78,21 @@ function handleParticle() {
         particlesArray[i].draw();
 
         // removing the parcles from the particlesArray if their size is less than 0.3
+
+        for (let j = i; j < particlesArray.length; j++) {
+            const dx = particlesArray[i].x - particlesArray[j].x;
+            const dy = particlesArray[i].y - particlesArray[j].x;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 100) {
+                ctx.beginPath();
+                ctx.strokeStyle = particlesArray[i].color;
+                ctx.lineWidth = particlesArray[i].size / 3;
+                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                ctx.stroke();
+            }
+        }
+
         if (particlesArray[i] <= 0.3) {
             particlesArray.splice(i, 1);
             i--;
@@ -89,10 +104,10 @@ function animate() {
     // ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // This is for particle trail effect
-    ctx.fillStyle = `rgba(0, 0, 0,0.1)`;
+    ctx.fillStyle = `rgba(0, 0, 0,0.5)`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     handleParticle();
-    hue += 5;
+    hue += 3;
     requestAnimationFrame(animate);
 }
 animate();
