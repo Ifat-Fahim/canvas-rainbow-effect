@@ -20,7 +20,7 @@ const mouse = {
 window.addEventListener("mousemove", (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 50; i++) {
         particlesArray.push(new Particle());
     }
 });
@@ -79,19 +79,19 @@ function handleParticle() {
 
         // removing the parcles from the particlesArray if their size is less than 0.3
 
-        for (let j = i; j < particlesArray.length; j++) {
-            const dx = particlesArray[i].x - particlesArray[j].x;
-            const dy = particlesArray[i].y - particlesArray[j].x;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < 100) {
-                ctx.beginPath();
-                ctx.strokeStyle = particlesArray[i].color;
-                ctx.lineWidth = particlesArray[i].size / 3;
-                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-                ctx.stroke();
-            }
-        }
+        // for (let j = i; j < particlesArray.length; j++) {
+        //     const dx = particlesArray[i].x - particlesArray[j].x;
+        //     const dy = particlesArray[i].y - particlesArray[j].x;
+        //     const distance = Math.sqrt(dx * dx + dy * dy);
+        //     if (distance < 100) {
+        //         ctx.beginPath();
+        //         ctx.strokeStyle = particlesArray[i].color;
+        //         ctx.lineWidth = particlesArray[i].size / 3;
+        //         ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+        //         ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+        //         ctx.stroke();
+        //     }
+        // }
 
         if (particlesArray[i] <= 0.3) {
             particlesArray.splice(i, 1);
