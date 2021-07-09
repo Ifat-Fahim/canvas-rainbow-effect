@@ -97,6 +97,13 @@ function handleParticle() {
             particlesArray.splice(i, 1);
             i--;
         }
+
+        // User's Experience can be tolerated if particles are more than 2000. So, if Particle's size is less than .21 and the number of particles are more than 2000, Some small particles will be spliced from the array and the new one will take place of them. The effect remains the same.
+        if (particlesArray[i].size < 0.21) {
+            if (particlesArray.length > 2000) {
+                particlesArray.splice(i, 1);
+            }
+        }
     }
 }
 
@@ -108,6 +115,7 @@ function animate() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     handleParticle();
     hue += 3;
+    console.log(particlesArray.length);
     requestAnimationFrame(animate);
 }
 animate();
